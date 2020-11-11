@@ -1,0 +1,69 @@
+<p *ngIf="true">
+  Párrafo 1
+</p>
+<p *ngIf="false">
+  Párrafo 2
+</p>
+
+<p *ngIf="answer === 42">
+  Párrafo 3
+</p>
+
+<ul>
+  <li *ngFor="let animal of animals, let i = index, let x=odd">
+    {{i}} {{x}} -  {{animal.name}}
+  </li>
+</ul>
+
+<div class="container" [ngSwitch]="answer">
+  <div *ngSwitchCase="4"> Value is A </div>
+  <div *ngSwitchCase="2"> Value is B </div>
+  <div *ngSwitchDefault> Value is something else </div>
+</div>
+
+<ng-container *ngIf ="isLoggedIn; then loggedIn; else loggedOut">
+</ng-container>
+<ng-template #loggedIn>
+<div [ngClass]="{ bordered: isBordered }">
+    Welcome back, friend.
+</div>
+</ng-template>
+<ng-template #loggedOut>
+<div [ngClass]="{ bordered: isBordered }">
+    Please friend, login.
+</div>
+</ng-template>
+
+<button (click)="isLoggedIn = !isLoggedIn">True | false</button>
+
+<button (click)="isBordered = !isBordered">Border</button>
+
+<div>
+  <h3>Ejemplo 2 - Múltiples condiciones para distintas clases</h3>
+  <input id="chb" type="checkbox" (change)="colorCheck = !colorCheck" /> Cambiar color
+  <br>
+  <input id="chb" type="checkbox" (change)="tamanoCheck = !tamanoCheck" /> Cambiar tamaño
+ 
+  <div class="cuadrado" [ngClass]="{ secundario: colorCheck }"></div>
+  <br /><br />
+ 
+  <div
+    class="cuadrado"
+    [ngClass]="{ 'secundario': colorCheck, 'cuadrado-grande': tamanoCheck }"
+  ></div>
+ </div>
+
+
+        <input [(ngModel)]="username">
+        <p> Hello {{username}}! </p>
+
+
+<div>
+  <h3>Ejemplo 1 - ngModel para hacer binding de dos vías (two-way binding)</h3>
+  Escribe algo: <input type="text" [(ngModel)]="texto" />
+  <br />
+  <span><strong>El valor de la variable es: </strong>{{ texto }}</span>
+  <br /><br />
+  <button (click)="hacerMayusculas()">MAYUSCULAS</button>
+  <button (click)="hacerMinusculas()">minusculas</button>
+</div>        
